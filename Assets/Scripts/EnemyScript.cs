@@ -12,6 +12,7 @@ public class EnemyScript : MonoBehaviour {
 
     void Update()
     {
+
         // Auto-fire
         if (weapon != null && weapon.CanAttack)
         {
