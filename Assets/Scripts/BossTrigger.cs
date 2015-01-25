@@ -25,7 +25,8 @@ public class BossTrigger : MonoBehaviour {
 
 
         Debug.Log("uhul");
-        boss.GetComponent<EnemyScript>().enabled = true;
+        if(boss!= null)
+            boss.GetComponent<EnemyScript>().enabled = true;
 
    
   
@@ -42,6 +43,8 @@ public class BossTrigger : MonoBehaviour {
 
 
         Debug.Log("uhul");
-        boss.GetComponent<EnemyScript>().enabled = false;
+        
+        if(boss!=null)
+            boss.GetComponent<EnemyScript>().enabled = false;
     }
 }
