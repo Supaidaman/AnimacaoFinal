@@ -50,5 +50,10 @@ public class HealthScript : MonoBehaviour
                 Destroy(shot.gameObject); // Remember to always target the game object, otherwise you will just remove the script
             }
         }
+
+        if(otherCollider.tag=="Enemy")
+        {
+            Damage(1);
+        }
     }
 }
