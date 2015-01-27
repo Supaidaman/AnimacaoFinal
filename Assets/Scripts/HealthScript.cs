@@ -6,6 +6,8 @@ public class HealthScript : MonoBehaviour
     /// <summary>
     /// Total hitpoints
     /// </summary>
+    ///
+    private int startHp;
     public int hp = 1;
     //Animation deathAnim;
     /// <summary>
@@ -20,6 +22,7 @@ public class HealthScript : MonoBehaviour
     /// 
     public void Start()
     {
+        startHp = hp;
         anim = GetComponent<Animator>();
     }
     public void Damage(int damageCount)
@@ -32,6 +35,7 @@ public class HealthScript : MonoBehaviour
             {
                 MMController controlador = GetComponent<MMController>();
                 controlador.transform.position = controlador.StartPosition;
+                hp = startHp;
                 return;
             }
 
