@@ -7,16 +7,21 @@ public class HealthScript : MonoBehaviour
     /// Total hitpoints
     /// </summary>
     public int hp = 1;
-
+    //Animation deathAnim;
     /// <summary>
     /// Enemy or player?
     /// </summary>
     public bool isEnemy = true;
-
+    private Animator anim;
     /// <summary>
     /// Inflicts damage and check if the object should be destroyed
     /// </summary>
     /// <param name="damageCount"></param>
+    /// 
+    public void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     public void Damage(int damageCount)
     {
         hp -= damageCount;
@@ -29,9 +34,10 @@ public class HealthScript : MonoBehaviour
                 controlador.transform.position = controlador.StartPosition;
                 return;
             }
-              
-               
-            Destroy(gameObject);
+
+            anim.SetBool("dead", true);
+            
+            Destroy(gameObject,0.50f);
         }
     }
 
