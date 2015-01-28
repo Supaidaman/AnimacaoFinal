@@ -31,18 +31,27 @@ public class HealthScript : MonoBehaviour
 
         if (hp <= 0)
         {
+            anim.SetBool("dead", true);
             if (!isEnemy) 
             {
-                MMController controlador = GetComponent<MMController>();
-                controlador.transform.position = controlador.StartPosition;
-                hp = startHp;
+                StartCoroutine("Death");
+               
+                
                 return;
             }
 
-            anim.SetBool("dead", true);
+          
             
             Destroy(gameObject,0.50f);
         }
+    }
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(0.50f);
+        anim.SetBool("dead", false);
+        MMController controlador = GetComponent<MMController>();
+        controlador.transform.position = controlador.StartPosition;
+        hp = startHp;
     }
 
     void OnTriggerEnter2D(Collider2D otherCollider)
