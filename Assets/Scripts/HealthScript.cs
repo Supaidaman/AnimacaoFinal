@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System;
 public class HealthScript : MonoBehaviour
 {
     /// <summary>
@@ -20,6 +20,10 @@ public class HealthScript : MonoBehaviour
     /// </summary>
     /// <param name="damageCount"></param>
     /// 
+    public int StartHP
+    {
+        get { return startHp; }
+    }
     public void Start()
     {
         startHp = hp;
@@ -32,19 +36,41 @@ public class HealthScript : MonoBehaviour
         if (hp <= 0)
         {
             anim.SetBool("dead", true);
-            if (!isEnemy) 
+            if (!isEnemy)
             {
                 StartCoroutine("Death");
-               
-                
+
+
                 return;
             }
 
-          
-            
-            Destroy(gameObject,0.50f);
+
+
+            Destroy(gameObject, 0.50f);
         }
+        //else 
+        //{
+        //    if (!isEnemy)
+        //    {
+        //        StartCoroutine("Knockback");
+
+
+        //        return;
+        //    }
+
+        //}
     }
+    IEnumerator Knockback()
+    {
+        yield return new WaitForSeconds(0.03f);
+        //anim.SetBool("dead", false);
+        MMController controlador = GetComponent<MMController>();
+        Vector3 newPos = new Vector3 (controlador.transform.position.x - (1.5f * Convert.ToInt32(controlador.FacingRight)), 
+            controlador.transform.position.y,controlador.transform.position.z);
+        controlador.transform.position = newPos;
+        //hp = startHp;
+    }
+
     IEnumerator Death()
     {
         yield return new WaitForSeconds(0.50f);

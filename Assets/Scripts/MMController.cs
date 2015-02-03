@@ -17,6 +17,11 @@ public class MMController : MonoBehaviour {
         get { return startPosition; }
         set { startPosition = value; }
     }
+    public bool FacingRight
+    {
+        get { return facingRight; }
+
+    }
 	// Use this for initialization
 	void Start () 
 	{
@@ -46,6 +51,8 @@ public class MMController : MonoBehaviour {
         if (rigidbody2D.position.y < -10)
         {
             transform.position = startPosition;
+            HealthScript hp = GetComponent<HealthScript>();
+            hp.hp = hp.StartHP;
 
         }
 
