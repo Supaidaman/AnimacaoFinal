@@ -40,7 +40,7 @@ public class HealthScript : MonoBehaviour
             {
                 StartCoroutine("Death");
 
-
+                Application.LoadLevel(0);
                 return;
             }
 

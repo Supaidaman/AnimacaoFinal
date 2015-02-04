@@ -50,9 +50,10 @@ public class MMController : MonoBehaviour {
 	{
         if (rigidbody2D.position.y < -10)
         {
-            transform.position = startPosition;
-            HealthScript hp = GetComponent<HealthScript>();
-            hp.hp = hp.StartHP;
+            //transform.position = startPosition;
+            //HealthScript hp = GetComponent<HealthScript>();
+            //hp.hp = hp.StartHP;
+            Application.LoadLevel(0);
 
         }
 
